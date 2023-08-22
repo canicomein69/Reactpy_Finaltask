@@ -73,12 +73,12 @@ def MyCrud():
 app = FastAPI()
 
 from pymongo.mongo_client import MongoClient
-from pymongo.server_api import ServerApiAPI
+from pymongo.server_api import ServerApi 
 app = FastAPI()
 
 #copy and paste the mongo DB URI 
 uri="mongodb+srv://Reactpy_Task1:reactpy123@cluster0.miqe39j.mongodb.net/"
-client= MongoClient (uri, server_api= ServerApi("1"))  #camel case
+client= MongoClient (uri, server_api=ServerApi("1"))  #camel case
 
 #defining the Db name
 db= client ["Reactpy_Task01"]
