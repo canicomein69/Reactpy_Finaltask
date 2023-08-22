@@ -39,7 +39,7 @@ def MyCrud():
         {"style": {"padding": "10px"}},
         ## creating form for submission\
         html.form(
-            {"on submit": mysubmit},
+            {"onsubmit": mysubmit},
             html.h1("Login Form - ReactPy & Mongodb"),
             html.input(
                 {
@@ -63,7 +63,7 @@ def MyCrud():
                         lambda event: mysubmit(event), prevent_default=True
                     ),
                 },
-                "Submit",
+                "submit",
             ),
         ),
         html.ul(list),
@@ -71,3 +71,23 @@ def MyCrud():
 
 
 app = FastAPI()
+
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApiAPI
+app = FastAPI()
+
+#copy and paste the mongo DB URI 
+uri="mongodb+srv://Reactpy_Task1:reactpy123@cluster0.miqe39j.mongodb.net/"
+client= MongoClient (uri, server_api= ServerApi("1"))  #camel case
+
+#defining the Db name
+db= client ["Reactpy_Task01"]
+collection=db["main"]
+
+#checking the connection
+try:
+    client.admin.command("Ping")
+    print("Successfully Connected MongoDB")
+
+except Exception as e:
+    print(e)
