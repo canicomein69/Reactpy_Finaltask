@@ -91,3 +91,22 @@ try:
 
 except Exception as e:
     print(e)
+
+def login(
+    login_data: dict,
+ ): # removed async, since await makes code  execution pause for the promise to resolve anyway. doesnt
+    username = login_data["name"]
+    password = login_data
+
+    # Create a document to insert into the collection
+    document = {"name":username, "password": password}
+    # logger.info("sample log messege")
+    print(document)
+
+    #Insert the docoument into the collection
+    post_id = collection.insert_one(document).inserted_id #insert document
+    print(post_id)
+
+    return {"messege": "Login successful"}
+
+configure(app, MyCrud)
