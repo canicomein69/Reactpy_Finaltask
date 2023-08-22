@@ -51,7 +51,7 @@ def MyCrud():
             html.input(
                 {
                     "type": "test",
-                    "placeholder": "Password",
+                    "placeholder": "password",
                     "on_change": lambda event: set_password(event["target"]["value"]),
                 }
             ),
